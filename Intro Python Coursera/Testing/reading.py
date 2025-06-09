@@ -17,5 +17,5 @@ for i in range(len(seq)):
 for i in range(len(positions)):
     dict[i] = positions[i]
 
-print("Format: \n\n(n)-th occurence: position\n")
+print(len(positions), "matching bases found \n\nFormat: \n\n(n)-th occurence: position\n")
 pprint(dict)
