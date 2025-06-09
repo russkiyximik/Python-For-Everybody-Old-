@@ -2,13 +2,16 @@
 # in the sequence. I will eventually make it so that it will ask which specific base you want.
 from pprint import pprint
 
-input = """gccgatcaatgctagagtcaactaccattggagggtacagtattaagcttggtgcacttagatgcggacaagtgagactataaggacccgagttgatgtgcagtttcaaggcttgaacggcgatttttatacttcgtttgataagtcaccctcacgaaagcaagcgtccccgtattgcaaggcaatgaaaccgacaatga"""
+seq = """gccgatcaatgctagagtcaactaccattggagggtacagtattaagcttggtgcacttagatgcggacaagtgagactataaggacccgagttgatgtgcagtttcaaggcttgaacggcgatttttatacttcgtttgataagtcaccctcacgaaagcaagcgtccccgtattgcaaggcaatgaaaccgacaatga"""
 positions = []
 dict = {}
 
+ask = input("What base would you like to know the positions of? Selections: a, g, c, t\n")
+print(ask)
+
 # The program will find all mentions of the adenine nucleotide.
-for i in range(len(input)):
-    if input[i] == "a":
+for i in range(len(seq)):
+    if seq[i] == ask.strip().lower():
         positions.append(i+1)
 
 for i in range(len(positions)):
