@@ -1,34 +1,13 @@
-val = 5
-
-def multiplier(x):
-    return x * 2
-
-for i in range(3):
-    print(val)
-    val = multiplier(val)
-
-print(val)
-
-# Trying a new thing
-
-largest = None
-smallest = None
+numint = []
 while True:
-    num = input("Enter a number: ")
-    try:
-        n = int(num)
-    except:
-        if num == "done":
+    repeat = False
+    inp = input("What are your numbers?")
+    nums = inp.split()
+    for num in nums:
+        try:
+            numint.append(int(num))
+        except:
+            print("Incorrect input! Try again")
+            repeat = True
             break
-        else:
-            print("Invalid input")
-    if largest is None and smallest is None:
-            largest = n
-            smallest = n
-    elif n > largest:
-            largest = n
-    elif n < smallest:
-            smallest = n
-
-print("Maximum is", largest)
-print("Minimum is", smallest)
+    if repeat == False: break

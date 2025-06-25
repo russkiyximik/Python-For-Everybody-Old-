@@ -3,19 +3,11 @@
 from pprint import pprint
 
 seq = """gccgatcaatgctagagtcaactaccattggagggtacagtattaagcttggtgcacttagatgcggacaagtgagactataaggacccgagttgatgtgcagtttcaaggcttgaacggcgatttttatacttcgtttgataagtcaccctcacgaaagcaagcgtccccgtattgcaaggcaatgaaaccgacaatga"""
-positions = []
 dict = {}
+ask = input("What base would you like to know the positions of? Selections: a, g, c, t\n").strip().lower()
 
-ask = input("What base would you like to know the positions of? Selections: a, g, c, t\n")
-print(ask)
-
-# The program will find all mentions of the adenine nucleotide.
 for i in range(len(seq)):
-    if seq[i] == ask.strip().lower():
-        positions.append(i+1)
+    dict[seq[i]] = dict.get(seq[i], 0) + 1
 
-for i in range(len(positions)):
-    dict[i] = positions[i]
-
-print(len(positions), "matching bases found \n\nFormat: \n\n(n)-th occurence: position\n")
+print(dict[ask], "matching bases found \n")
 pprint(dict)
