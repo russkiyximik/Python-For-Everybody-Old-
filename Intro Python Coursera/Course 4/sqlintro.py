@@ -20,15 +20,23 @@ for line in fh:
     row = cur.fetchone()
     if row is None:
         cur.execute('''INSERT INTO Counts (org, count)
-                VALUES (?, 1)''', (email,))
+                VALUES (?, 1)''', (email,))        
     else:
         cur.execute('UPDATE Counts SET count = count + 1 WHERE org = ?',
                     (email,))
+        print(cur.execute('SELECT org, count FROM Counts WHERE org = ? ', (email,)).fetchone())
+        
 
 conn.commit()
 
 # https://www.sqlite.org/lang_select.html
 sqlstr = 'SELECT org, count FROM Counts ORDER BY count DESC LIMIT 10'
+
+print('\n\n')
+print(cur.execute(sqlstr).fetchone())
+print(cur.fetchone())
+print(cur.fetchone())
+print('\n\n')
 
 for row in cur.execute(sqlstr):
     print(str(row[0]), row[1])
