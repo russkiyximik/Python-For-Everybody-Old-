@@ -14,17 +14,14 @@ ctx.verify_mode = ssl.CERT_NONE
 conn = sqlite3.connect('spider.sqlite')
 cur = conn.cursor()
 
-cur.execute('''--sql
-            CREATE TABLE IF NOT EXISTS Pages
+cur.execute('''CREATE TABLE IF NOT EXISTS Pages
             (id INTEGER PRIMARY KEY, url TEXT UNIQUE, html TEXT,
             error INTEGER, old_rank REAL, new_rank REAL)''')
 
-cur.execute('''--sql
-            CREATE TABLE IF NOT EXISTS Links
+cur.execute('''CREATE TABLE IF NOT EXISTS Links
             (from_id INTEGER, to_id INTEGER, UNIQUE(from_id, to_id))''')
 
-cur.execute('''--sql
-            CREATE TABLE IF NOT EXISTS Webs (url TEXT UNIQUE)''')
+cur.execute('''CREATE TABLE IF NOT EXISTS Webs (url TEXT UNIQUE)''')
 
 # Check to see if we are already in progress...
 cur.execute('SELECT id,url FROM Pages WHERE html is NULL and error is NULL ORDER BY RANDOM() LIMIT 1')
